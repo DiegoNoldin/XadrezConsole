@@ -9,21 +9,21 @@ namespace tabuleiro
         public int colunas { get; set; }
         private Peca[,] pecas;
 
-        public Tabuleiro (int linhas, int colunas)
+        public Tabuleiro (int linhas,int colunas)
         {
 
             this.linhas=linhas;
             this.colunas=colunas;
-            pecas=new Peca[linhas, colunas];
+            pecas=new Peca[linhas,colunas];
 
         }
-        public Peca peca (int linha, int coluna)
+        public Peca peca (int linha,int coluna)
         {
-            return pecas[linha, coluna];
+            return pecas[linha,coluna];
         }
         public Peca peca (Posicao pos)
         {
-            return pecas[pos.linha, pos.coluna];
+            return pecas[pos.linha,pos.coluna];
         }
 
         public bool existPeca (Posicao pos)
@@ -32,14 +32,14 @@ namespace tabuleiro
             return peca(pos)!=null;
         }
 
-        public void colocarPeca (Peca p, Posicao pos)
+        public void colocarPeca (Peca p,Posicao pos)
         {
             if (existPeca(pos))
             {
                 throw new tabuleiroException("Ja exixte uma peça nessa posição");
             }
 
-            pecas[pos.linha, pos.coluna]=p;
+            pecas[pos.linha,pos.coluna]=p;
             p.posicao=pos;
         }
 
@@ -51,7 +51,7 @@ namespace tabuleiro
             }
             Peca aux = peca(pos);
             aux.posicao=null;
-            pecas[pos.linha, pos.coluna]=null;
+            pecas[pos.linha,pos.coluna]=null;
             return aux;
         }
 

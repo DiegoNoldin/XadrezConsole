@@ -3,7 +3,7 @@
 
 namespace tabuleiro
 {
-    class tabuleiroException : Exception
+    class tabuleiroException:Exception
     {
 
         public tabuleiroException (string msg) : base(msg)

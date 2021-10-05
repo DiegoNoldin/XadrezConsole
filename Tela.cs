@@ -8,6 +8,104 @@ namespace XadrezConsole
 {
     class Tela
     {
+        public static string OrgTabColum (Posicao pos)
+        {
+            string[] aux = pos.ToString().Split(',');
+            bool i = false;
+            while (i==false)
+            {
+                if (aux[0]=="0")
+                {
+                    i=true;
+                    return "8";
+
+                } else if (aux[0]=="1")
+                {
+                    i=true;
+                    return "7";
+
+                } else if (aux[0]=="2")
+                {
+                    i=true;
+                    return "6";
+
+                } else if (aux[0]=="3")
+                {
+                    i=true;
+                    return "5";
+
+                } else if (aux[0]=="4")
+                {
+                    i=true;
+                    return "4";
+
+                } else if (aux[0]=="5")
+                {
+                    i=true;
+                    return "3";
+
+                } else if (aux[0]=="6")
+                {
+                    i=true;
+                    return "2";
+
+                } else 
+                {
+                    i=true;
+                    return "1";
+                }
+            }
+            return aux[0];
+        }
+        public static string OrgTabLine (Posicao pos)
+        {
+            string[] aux = pos.ToString().Split(',');
+            bool j=false;
+            while (j==false)
+            {
+                if (aux[1]=="0")
+                {
+                    j=true;
+                    return "h";
+
+                } else if (aux[1]=="1")
+                {
+                    j=true;
+                    return "g";
+
+                } else if (aux[1]=="2")
+                {
+                    j=true;
+                    return "f";
+
+                } else if (aux[1]=="3")
+                {
+                    j=true;
+                    return "e";
+
+                } else if (aux[1]=="4")
+                {
+                    j=true;
+                    return "d";
+
+                } else if (aux[1]=="5")
+                {
+                    j=true;
+                    return "c";
+
+                } else if (aux[1]=="6")
+                {
+                    j=true;
+                    return "b";
+
+                } else 
+                {
+                    j=true;
+                    return "a";
+                }
+            }
+            return aux[1];
+        }
 
         public static void printPartida (PartidaChess partida)
         {
@@ -86,15 +184,15 @@ namespace XadrezConsole
             Console.ForegroundColor=ConsoleColor.DarkGreen;
             Console.WriteLine(" ¢ A B C D E F G H ¢");
             Console.ForegroundColor=aux;
-            for (int i = 0; i<tab.linhas; i++)
+            for (int i = 0;i<tab.linhas;i++)
             {
                 Console.ForegroundColor=ConsoleColor.DarkGreen;
                 Console.Write(" ");
                 Console.Write(8-i+" ");
                 Console.ForegroundColor=aux;
-                for (int j = 0; j<tab.colunas; j++)
+                for (int j = 0;j<tab.colunas;j++)
                 {
-                    Tela.printPeca(tab.peca(i, j));
+                    Tela.printPeca(tab.peca(i,j));
                 }
                 Console.ForegroundColor=ConsoleColor.DarkGreen;
                 Console.Write(8-i+" ");
@@ -108,7 +206,7 @@ namespace XadrezConsole
 
         }
 
-        public static void printTabuleiro (Tabuleiro tab, bool[,] possivelPos, PartidaChess partida)
+        public static void printTabuleiro (Tabuleiro tab,bool[,] possivelPos,PartidaChess partida)
         {
 
             Console.Clear();
@@ -120,24 +218,24 @@ namespace XadrezConsole
             ConsoleColor fundoOrig = Console.BackgroundColor;
             ConsoleColor fundoMark = ConsoleColor.DarkGray;
 
-            for (int i = 0; i<tab.linhas; i++)
+            for (int i = 0;i<tab.linhas;i++)
             {
                 Console.ForegroundColor=ConsoleColor.DarkGreen;
                 Console.Write(" ");
                 Console.Write(8-i+" ");
                 Console.ForegroundColor=aux;
                 Console.BackgroundColor=fundoOrig;
-                for (int j = 0; j<tab.colunas; j++)
+                for (int j = 0;j<tab.colunas;j++)
                 {
 
-                    if (possivelPos[i, j])
+                    if (possivelPos[i,j])
                     {
                         Console.BackgroundColor=fundoMark;
                     } else
                     {
                         Console.BackgroundColor=fundoOrig;
                     }
-                    Tela.printPeca(tab.peca(i, j));
+                    Tela.printPeca(tab.peca(i,j));
                     Console.ForegroundColor=aux;
                     Console.BackgroundColor=fundoOrig;
                 }
@@ -157,10 +255,16 @@ namespace XadrezConsole
         }
         public static PosicaoXadrez LerPosicaoXadrez ()
         {
-            string s = Console.ReadLine();
-            char coluna = s[0];
-            int linha = int.Parse(s[1]+" ");
-            return new PosicaoXadrez(coluna, linha);
+            try
+            {
+                string s = Console.ReadLine();
+                char coluna = s[0];
+                int linha = int.Parse(s[1]+" ");
+                return new PosicaoXadrez(coluna,linha);
+            } catch (Exception)
+            {
+                throw new tabuleiroException("Posição Invalida");
+            }
         }
 
         public static void printPeca (Peca peca)

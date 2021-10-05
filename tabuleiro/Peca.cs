@@ -9,7 +9,7 @@ namespace tabuleiro
         public int qteMov { get; protected set; }
         public Tabuleiro tab { get; protected set; }
 
-        public Peca (Tabuleiro tab, Cor cor)
+        public Peca (Tabuleiro tab,Cor cor)
         {
             this.posicao=null;
             this.tab=tab;
@@ -32,11 +32,11 @@ namespace tabuleiro
         public bool existMovPoss ()
         {
             bool[,] mat = possivelMov();
-            for (int i = 0; i<tab.linhas; i++)
+            for (int i = 0;i<tab.linhas;i++)
             {
-                for (int j = 0; j<tab.colunas; j++)
+                for (int j = 0;j<tab.colunas;j++)
                 {
-                    if (mat[i, j])
+                    if (mat[i,j])
                     {
                         return true;
                     }
@@ -47,7 +47,7 @@ namespace tabuleiro
 
         public bool possivelMov (Posicao pos)
         {
-            return possivelMov()[pos.linha, pos.coluna];
+            return possivelMov()[pos.linha,pos.coluna];
         }
         public abstract bool[,] possivelMov ();
     }

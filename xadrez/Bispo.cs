@@ -2,10 +2,10 @@
 
 namespace xadrez
 {
-    class Bispo : Peca
+    class Bispo:Peca
     {
 
-        public Bispo (Tabuleiro tab, Cor cor) : base(tab, cor)
+        public Bispo (Tabuleiro tab,Cor cor) : base(tab,cor)
         {
 
         }
@@ -21,15 +21,15 @@ namespace xadrez
         }
         public override bool[,] possivelMov ()
         {
-            bool[,] mat = new bool[tab.linhas, tab.colunas];
+            bool[,] mat = new bool[tab.linhas,tab.colunas];
 
-            Posicao pos = new Posicao(0, 0);
+            Posicao pos = new Posicao(0,0);
 
             //Diag.direita.cima
-            pos.defVal(posicao.linha-1, posicao.coluna+1);
+            pos.defVal(posicao.linha-1,posicao.coluna+1);
             while (tab.validPos(pos)&&podMov(pos))
             {
-                mat[pos.linha, pos.coluna]=true;
+                mat[pos.linha,pos.coluna]=true;
                 if (tab.peca(pos)!=null&&tab.peca(pos).cor!=cor)
                 {
                     break;
@@ -39,10 +39,10 @@ namespace xadrez
             }
 
             //Diag.direita.baixo
-            pos.defVal(posicao.linha+1, posicao.coluna+1);
+            pos.defVal(posicao.linha+1,posicao.coluna+1);
             while (tab.validPos(pos)&&podMov(pos))
             {
-                mat[pos.linha, pos.coluna]=true;
+                mat[pos.linha,pos.coluna]=true;
                 if (tab.peca(pos)!=null&&tab.peca(pos).cor!=cor)
                 {
                     break;
@@ -52,10 +52,10 @@ namespace xadrez
             }
 
             //Diag.esquerda.baixo
-            pos.defVal(posicao.linha+1, posicao.coluna-1);
+            pos.defVal(posicao.linha+1,posicao.coluna-1);
             while (tab.validPos(pos)&&podMov(pos))
             {
-                mat[pos.linha, pos.coluna]=true;
+                mat[pos.linha,pos.coluna]=true;
                 if (tab.peca(pos)!=null&&tab.peca(pos).cor!=cor)
                 {
                     break;
@@ -66,10 +66,10 @@ namespace xadrez
             }
 
             //Diag.esquerda.cima
-            pos.defVal(posicao.linha-1, posicao.coluna-1);
+            pos.defVal(posicao.linha-1,posicao.coluna-1);
             while (tab.validPos(pos)&&podMov(pos))
             {
-                mat[pos.linha, pos.coluna]=true;
+                mat[pos.linha,pos.coluna]=true;
                 if (tab.peca(pos)!=null&&tab.peca(pos).cor!=cor)
                 {
                     break;

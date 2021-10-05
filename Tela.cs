@@ -49,7 +49,7 @@ namespace XadrezConsole
                     i=true;
                     return "2";
 
-                } else 
+                } else
                 {
                     i=true;
                     return "1";
@@ -60,7 +60,7 @@ namespace XadrezConsole
         public static string OrgTabLine (Posicao pos)
         {
             string[] aux = pos.ToString().Split(',');
-            bool j=false;
+            bool j = false;
             while (j==false)
             {
                 if (aux[1]=="0")
@@ -98,7 +98,7 @@ namespace XadrezConsole
                     j=true;
                     return "b";
 
-                } else 
+                } else
                 {
                     j=true;
                     return "a";
